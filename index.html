@@ -31,15 +31,18 @@
 
     </header>
 
-<!-- form section-->
-<div class="container">
-    <section>
-        <h3>Ajouter des produits</h3>
-    </section>
-</div>
-
-
-
+    <!-- form section-->
+    <div class="container">
+        <section>
+            <h3>Ajouter des produits</h3>
+            <form action="" class="add_product">
+                <input type="text" placeholder="Entrez le nom du produit" class="input_fields" required>
+                <input type="number" min="0" placeholder="Entrez le prix du produit" class="input_fields" required>
+                <input type="file" class="input_fields" required>
+                <input type="submit" class="submit_btn" value="Ajoutez un produit" required>
+            </form>
+        </section>
+    </div>
 
     <!-- script-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
