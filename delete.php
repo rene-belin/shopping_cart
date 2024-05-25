@@ -1,9 +1,6 @@
-<!-- En-tête -->
-
-<!-- PHP code -->
 <?php
 include 'connect.php';
-
+session_start();  // Démarrer la session
 
 if (isset($_GET['delete'])) {
     // Récupération de l'ID à supprimer en utilisant une méthode sécurisée
@@ -16,22 +13,16 @@ if (isset($_GET['delete'])) {
 
         // Exécution de la requête
         if ($delete_query->execute()) {
-            $_SESSION['message'] = "Produit supprimé avec succès.";
-
-            // Redirection après suppression réussie
-            header('Location: view_product.php');
-            exit();
+            $_SESSION['message'] = "Le produit à été supprimé avec succès.";
         } else {
-            // Message d'erreur si la suppression échoue
-            $_SESSION["message"] = "echec dela suppression du produit.";
-            header('Location: view_product.php');
-            exit();
+            $_SESSION['message'] = "Échec de la suppression du produit.";
         }
     } catch (PDOException $e) {
-        // Affichage du message d'erreur en cas d'exception
-        $_SESSION["message"] = "Erreur lors de la suppression : " . $e->getMessage();
-        header('Location: view_product.php');
-        exit();
+        $_SESSION['message'] = "Erreur lors de la suppression : " . $e->getMessage();
     }
+
+    // Redirection après suppression
+    header('Location: view_product.php');
+    exit();
 }
 ?>

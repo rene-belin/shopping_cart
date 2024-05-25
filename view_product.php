@@ -1,5 +1,8 @@
 <!-- Inclure la connexion à la base de données -->
-<?php include 'connect.php'; ?>
+<?php
+include 'connect.php';
+session_start();  // Démarrer la session
+?>
 <!-- HTML -->
 <!doctype html>
 <html lang="fr">
@@ -16,8 +19,16 @@
     <!-- En-tête -->
     <?php include 'header.php'; ?>
     <div class="container">
+        <!-- Afficher le message de session s'il existe -->
+        <?php
+        if (isset($_SESSION['message'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
+            unset($_SESSION['message']);  // Supprimer le message après affichage
+        }
+        ?>
+
         <section class="display_product">
-            <table>
+            <table class="table table-bordered">
                 <thead>
                     <tr class="text-center">
                         <th>N°</th>
@@ -51,15 +62,14 @@
                                 <td><?php echo $product['name']; ?></td>
                                 <td><?php echo $product['price']; ?></td>
                                 <td>
-                                    <a href="delete.php?delete=<?php echo $product['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce produit ?')"><i class="fa-solid fa-trash-can"></i></a>
-
+                                    <a href="delete.php?delete=<?php echo $product['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce produit ?')"><i class="fa-solid fa-trash-can"></i></a>
                                     <a href="#" class="btn btn-outline-success"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
-                        <?php
+                    <?php
                         }
                     } else {
-                        ?>
+                    ?>
                         <tr>
                             <td colspan="5">Aucun produit trouvé.</td>
                         </tr>
