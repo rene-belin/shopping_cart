@@ -59,9 +59,9 @@ if (isset($_POST["add_product"])) {
         }
         ?>
 
-        <section>
+        <section class="mt-5">
             <h3>Ajouter des produits</h3>
-            <form action="" class="add_product" method="post" enctype="multipart/form-data">
+            <form action="" class="add_product mt-3" method="post" enctype="multipart/form-data">
                 <input type="text" name="product_name" placeholder="Entrez le nom du produit" class="input_fields" required>
                 <input type="number" name="product_price" min="0" placeholder="Entrez le prix du produit" class="input_fields" required>
                 <input type="file" name="product_image" class="input_fields" required accept="image/png, image/jpg, image/jpeg">
